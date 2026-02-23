@@ -34,9 +34,6 @@
 #define PROBE_PIN_OFFSET 10
 #define PROBE_PIN_SWCLK (PROBE_PIN_OFFSET + 0) 
 #define PROBE_PIN_SWDIO (PROBE_PIN_OFFSET + 1) 
-#define PROBE_PIN_GND (PROBE_PIN_OFFSET + 2)
-#define PROBE_PIN_GND2 (PROBE_PIN_OFFSET + 3)
-#define PROBE_PIN_VCC (PROBE_PIN_OFFSET + 4)
 // Target reset config
 #if false
 #define PROBE_PIN_RESET 1

@@ -35,6 +35,9 @@
 #include <stdio.h>
 
 static uint8_t red_s, green_s, blue_s;
+PIO pio;
+uint sm;
+uint offset;
 
 void put_pixel(uint32_t pixel_grb)
 {
@@ -63,10 +66,9 @@ void led_blue_set(uint8_t set){
 }
 
 void led_init(void) {
-    PIO pio = pio1;
-    int sm = 0;
-    uint offset = pio_add_program(pio, &ws2812_program);
-    ws2812_program_init(pio, sm, offset, 16, 800000, true);
+    bool success = pio_claim_free_sm_and_add_program_for_gpio_range(&ws2812_program, &pio, &sm, &offset, 16, 1, true); 
+    hard_assert(success);
+    ws2812_program_init(pio, sm, offset, 16, 800000, false);
 }
 #else
 
